@@ -7,7 +7,7 @@
     <div class='news'>
         <h3>
             <?= htmlspecialchars($post['title']); ?>
-            <em><?= nl2br(htmlspecialchars($post['date_formate']));?></em>
+            <em><?= nl2br(htmlspecialchars($post['date_creation_fr']));?></em>
         </h3>
         <p>
             <?= nl2br(htmlspecialchars($post['content']));?>
@@ -16,9 +16,17 @@
 
     <div class='comments'>
         <h2>Commentaires</h2>
+        <form method='post' action='index.php?action=addComment&amp;id=<?= $post['id'] ?>'>
+		    <label for='author'>Pseudo :</label>
+            <input type='text' id='author' name='author'></br>
+			<label for='comment'>Commentaire : </label></br>
+			<textarea name='comment' id='comment' rows=6 cols=42 required></textarea></br>	
+			<input type='submit' value='Envoyer!'>
+		</form>
+
         <?php
         $data_com = $comments->fetchAll();
-        if (empty(data_com))
+        if (empty($data_com))
         {
             echo "<p id='no_com'>Il n'y a pas encore de commentaires sur ce billet!</p>";
         }
