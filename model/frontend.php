@@ -1,8 +1,16 @@
 <?php
-function getPosts(){
+function getPosts($limit_start){
     $db = dbConnect();
-    $req = $db->query("SELECT id, title, content, DATE_FORMAT(date_creation, 'le %d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM posts ORDER BY id DESC LIMIT 0,5"); 
+    $req = $db->query("SELECT id, title, content, DATE_FORMAT(date_creation, 'le %d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM posts ORDER BY id DESC LIMIT 5 OFFSET $limit_start"); 
     return $req;
+}
+
+function countPosts(){
+    $db = dbConnect();
+    $count = $db->query("SELECT COUNT(*) AS total_posts FROM posts");
+    $nb = $count->fetch();
+    $nb_pages = ceil($nb['total_posts']/5);
+    return $nb_pages;
 }
 
 function getPost($postId){

@@ -2,10 +2,11 @@
 
 require("/opt/lampp/htdocs/projet-blog/Blog2/model/frontend.php");
 
-function listPosts()
+function listPosts($page_nb)
 {
-    $posts = getPosts();
-    
+    $limit_start = ($page_nb - 1)*5;
+    $posts = getPosts($limit_start);
+    $nb_pages = countPosts();
     require("/opt/lampp/htdocs/projet-blog/Blog2/view/frontend/listPostsView.php");
 }
 
