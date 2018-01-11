@@ -1,0 +1,75 @@
+h1, h3
+{
+	text-align:center;
+}
+h3
+{
+	background-color:black;
+	color:white;
+	font-size:0.9em;
+	margin-bottom:0px;
+}
+.news p
+{
+	background-color:#CCC;
+	margin-top:0px;
+}
+.news
+{
+	width:70%;
+	margin:auto;
+}
+
+a
+{
+	text-decoration: none;
+	color: blue;
+}
+
+input
+{
+
+	margin: 10px 0px;
+}
+
+textarea
+{
+	overflow: auto;
+	resize: none;
+	margin-top:5px;
+}
+
+#pages
+{	
+	text-align:center;
+	margin: 30px 0 15px 0;
+}
+
+#pages p
+{
+	display: inline;
+	border: solid black 1px;
+	padding: 5px 10px;
+}
+
+#erreur
+{
+	text-align:center;
+	margin: 200px 0;
+	font-size: 3em;
+}
+
+#admin
+{
+	text-align:right;
+}
+
+#admin a
+{
+	color:red;
+}
+
+#menu_admin a
+{
+	color:red;
+}
