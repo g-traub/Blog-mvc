@@ -1,26 +1,36 @@
 <?php
 
-require("/opt/lampp/htdocs/projet-blog/Blog2/model/frontend.php");
+//chargement des classes
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 
 function listPosts($page_nb)
 {
     $limit_start = ($page_nb - 1)*5;
-    $posts = getPosts($limit_start);
+    $postManager = new Postmanager(); //Création d'un objet
+    $posts = $postManager->getPosts($limit_start); //Appel d'une fonction à cet objet
     $nb_pages = countPosts();
-    require("/opt/lampp/htdocs/projet-blog/Blog2/view/frontend/listPostsView.php");
+    
+    require("view/frontend/listPostsView.php");
 }
 
 function post()
 {
-    $post = getPost($_GET['id']);
-    $comments = getComments($_GET['id']);
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
 
-    require("/opt/lampp/htdocs/projet-blog/Blog2/view/frontend/postView.php");
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+
+    require("view/frontend/postView.php");
 }
 
 function addComment($postId, $author, $comment)
 {
-    $affected_lines = postComment($postId, $author, $comment);
+    $commentManager = new CommentManager();
+
+    $affected_lines = $commentManager->postComment($postId, $author, $comment);
+
     if ($affected_lines == false)
     {
         throw new Exception('Impossible d\'ajouter le commentaire');
