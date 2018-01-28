@@ -8,6 +8,7 @@ function listPosts($page_nb)
 {
     $limit_start = ($page_nb - 1)*5;
     $postManager = new Postmanager(); //Création d'un objet
+    
     $posts = $postManager->getPosts($limit_start); //Appel d'une fonction à cet objet
     $nb_pages = $postManager->countPosts();
     
@@ -28,7 +29,7 @@ function post()
 function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-
+    
     $affected_lines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affected_lines == false)
@@ -38,5 +39,28 @@ function addComment($postId, $author, $comment)
     else
     {
         header('Location: index.php?action=post&id='.$postId);
+    }
+}
+
+function editComment($commentId, $editedComment, $postId)
+{
+    $commentManager = new CommentManager();
+
+    if ($editedComment == null)
+    {
+       $comment = $commentManager->getComment($commentId);
+       require("view/frontend/commentEditorView.php"); 
+    }
+    else
+    {
+        $comment = $commentManager->updateComment($commentId, $editedComment);
+        if ($comment == false)
+        {
+            throw new Exception('impossible d\'éditer le commentaire');
+        }
+        else
+        {
+            header('Location: index.php?action=post&id='.$postId);
+        }
     }
 }

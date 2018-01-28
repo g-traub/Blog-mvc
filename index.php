@@ -31,6 +31,22 @@ try {
                 throw new Exception('Aucun identifiant de billet renvoyé');
             }
         }
+        elseif ($_GET['action'] == 'editComment') {
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                if (!isset($_POST['edited_comment'])) {
+                    editComment($_GET['commentId'], null, null);
+                }
+                elseif(isset($_POST['edited_comment'])) {
+                    editComment($_GET['commentId'],$_POST['edited_comment'], $_GET['postId']);
+                }
+                else {
+                    throw new Exception('Etape non renvoyée');
+                } 
+            }
+            else {
+                throw new Exception('Aucun identifiant de commentaire renvoyé');
+            }
+        }
     }
     else {
         listPosts(1);

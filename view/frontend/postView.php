@@ -36,7 +36,7 @@
             {
         ?>        
             <p>
-                <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['date_comment_fr'] ?></p>
+                <strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['date_comment_fr'] ?> (<a href='index.php?action=editComment&amp;commentId=<?=$comment['id']?>&amp;postId=<?=$_GET['id']?>'>edit</a>)
             </p>
             <p><?= nl2br(htmlspecialchars($comment['comment']))?></p>
         
