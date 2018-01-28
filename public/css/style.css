@@ -1,3 +1,15 @@
+body
+{
+	text-align:center;
+	margin: 30px 0 15px 0;
+}
+
+p
+{
+	display: inline;
+	border: solid rgb(0, 0, 0) 1px;
+	padding: 5px 10px;
+}
 h1, h3
 {
 	text-align:center;
@@ -28,7 +40,6 @@ a
 
 input
 {
-
 	margin: 10px 0px;
 }
 
@@ -37,26 +48,6 @@ textarea
 	overflow: auto;
 	resize: none;
 	margin-top:5px;
-}
-
-#pages
-{	
-	text-align:center;
-	margin: 30px 0 15px 0;
-}
-
-#pages p
-{
-	display: inline;
-	border: solid black 1px;
-	padding: 5px 10px;
-}
-
-#erreur
-{
-	text-align:center;
-	margin: 200px 0;
-	font-size: 3em;
 }
 
 #admin

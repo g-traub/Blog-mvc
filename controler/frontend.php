@@ -9,7 +9,7 @@ function listPosts($page_nb)
     $limit_start = ($page_nb - 1)*5;
     $postManager = new Postmanager(); //Création d'un objet
     $posts = $postManager->getPosts($limit_start); //Appel d'une fonction à cet objet
-    $nb_pages = countPosts();
+    $nb_pages = $postManager->countPosts();
     
     require("view/frontend/listPostsView.php");
 }
